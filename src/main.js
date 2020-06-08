@@ -4,6 +4,9 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 
+import axios from 'axios'
+Vue.prototype.$axios = axios;
+
 import './assets/styles/tailwind.scss';
 
 Vue.config.productionTip = false
