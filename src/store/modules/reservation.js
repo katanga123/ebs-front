@@ -27,8 +27,13 @@ const actions = {
             .catch(errors => {
                 commit('getErrors', errors.response.data)
             })
+    },
 
-
+    async updateReservation({commit}, data){
+        await axios.put(urlService.reservationUrl() + '/'+ data.id, data, urlService.configContentType())
+        .then(response => {
+            commit('editReservation', response.data)
+        })
     }
 }
 
@@ -41,6 +46,12 @@ const mutations = {
     },
     getErrors: (state, errors) => {
         state.errors = errors
+    },
+    editReservation: (state, updReservation) => {
+        const index = state.reservations.findIndex(reservation => reservation.id === updReservation.id)
+        if(index !== 1){
+            state.reservations.splice(index, 1, updReservation)
+        }
     }
 }
 

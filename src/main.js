@@ -11,6 +11,8 @@ import './assets/styles/tailwind.scss';
 
 Vue.config.productionTip = false
 
+
+
 new Vue({
   router,
   store,
